@@ -181,6 +181,44 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
 
         - 두 개 이상의 테이블 질의(Query)
             - 관계형 DB에서 가장 중요한 기법 중 하나이다.
+            ```sql
+            -- Q. Customer, Orders 테이블을 동시에 조회하라(조건없이)
+             SELECT *
+               FROM Customer, Orders; 
+            -- 50개 행이 출력, 그러나 이는 제대로 알아 볼 수 없는 의미없는 출력이다.
+            -- 이는 조건이 제대로 달려있지 않기 때문이다
+            
+            -- Q. Customer, Orders 테이블을 동시에 조회하라(둘의 custid가 일치한다는 조건)
+             SELECT *
+               FROM Customer, Orders
+              WHERE Customer.custid = Orders.custid -- Customer, Orders 둘의 custid가 일치한다는 의미의 WHERE 절
+              ORDER BY Customer.custid ASC;
+            -- 10개 행이 출력, 정확히 출력된다.
+
+            -- 현재 단계에서는 출력되는 행이 Customer(행의 수) + Orders(행의 수) = 10행을 넘어설 수 없다. 
+            ```
+
+            - 실무
+                - 실무에서는 *(ALL) 을 잘 사용하지 않기때문에
+                ```sql
+                 SELECT c.custid
+                      , c.[name]
+	                  , c.[address]
+	                  , c.phone
+	                  , o.orderid
+	                  , o.custid
+	                  , o.bookid
+	                  , o.saleprice
+	                  , o.orderdate
+                   FROM Customer AS c, Orders AS o
+                  WHERE c.custid = O.custid
+                  ORDER BY C.custid ASC;
+                ```
+                - 이처럼 각 테이블의 별명으로 줄여 사용하는 것이 일반적이다.
+                - 내부 조인, Inner Join
+                    - 지금과 같이 양쪽의 수가 딱 일치하는 경우에 사용하는 Join을 의미한다.
+            - Join
+                ![Join](https://sql-joins.leopard.in.ua/)
 
 ## 3일차
 
