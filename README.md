@@ -134,7 +134,19 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
 - DML 학습
     - SELECT 문
         - 복합 조건
-        - 집계 함수와 GROUP BY, HAVING
+            - ORDER BY
+                - 정렬은 DB에서 진행하는게 가장 간편하고 이는 ORDER BY 구문을 통해 진행한다.
+                - 정렬은 기본적으로 ASC(Ascending : 오름차순)이다.
+                    - ASC  : (Ascending : 오름차순)
+                    - DESC : (Descending : 내림차순)
+                ```sql
+                -- Q. 도서를 가격순으로 검색하고, 가격이 같으면 이름순으로 검색
+                 SELECT *
+                   FROM Book
+                  ORDER BY price ASC, bookname DESC;
+                ```
+
+        - 집계 함수와 GROUP BY, HAVING, WHERE
             - 집계 함수
                 - SUM(총 합), AVG(평균), COUNT(개수), MIN(최소), MAX(최대) 
             - GROUP BY
@@ -148,6 +160,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 - 단, saleprice는 집계함수 안에 들어있으므로 예외이다.
             - HAVING
                 - HAVING은 집계함수의 필터로 GROUP BY 뒤에 작성. WHERE절과 필터링이 다르다.
+                - 집계함수의 경우 조건에 HAVING을 사용.
                 ```sql
                  SELECT custid, COUNT(*) AS [구매수]
                    FROM Orders
@@ -164,6 +177,10 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                        FROM Customer
                       WHERE [name] LIKE '김%아';
                     ```
+            
+
+        - 두 개 이상의 테이블 질의(Query)
+            - 관계형 DB에서 가장 중요한 기법 중 하나이다.
 
 ## 3일차
 

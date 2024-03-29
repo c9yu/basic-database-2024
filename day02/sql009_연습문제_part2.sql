@@ -5,7 +5,7 @@ SELECT COUNT (bookid) AS '총 도서 개수'
   FROM Book;
 
 -- 2. 마당서점에 도서를 출고하는 출판사의 총 개수
-SELECT COUNT (publisher) AS '총 출판사 수'
+SELECT COUNT (DISTINCT publisher) AS '총 출판사 수'
   FROM Book;
 
 -- 3. 모든 고객의 이름, 주소
