@@ -180,7 +180,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             
 
         - 두 개 이상의 테이블 질의(Query)
-            - 관계형 DB에서 가장 중요한 기법 중 하나이다.
+            - 관계형 DB에서 가장 중요한 기법 중 하나이다. : JOIN
             ```sql
             -- Q. Customer, Orders 테이블을 동시에 조회하라(조건없이)
              SELECT *
@@ -218,7 +218,13 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 - 내부 조인, Inner Join
                     - 지금과 같이 양쪽의 수가 딱 일치하는 경우에 사용하는 Join을 의미한다.
             - Join
-                ![Join](https://sql-joins.leopard.in.ua/)
+                - 관계형 DB에서 가장 중요한 기법 중 하나 : JOIN!
+                - INNER JOIN(내부 조인)
+                - LEFT|RIGHT OUTER JOIN(외부 조인) - 어느 테이블이 기준인지에 따라서 결과가 상이함
+                ![외부 조인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db004.png)
+                ![참조](https://sql-joins.leopard.in.ua/)
+
+
 
 ## 3일차
 
