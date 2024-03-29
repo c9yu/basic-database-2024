@@ -222,7 +222,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 - INNER JOIN(내부 조인)
                 - LEFT|RIGHT OUTER JOIN(외부 조인) - 어느 테이블이 기준인지에 따라서 결과가 상이함
                 ![외부 조인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db004.png)
-                ![참조](https://sql-joins.leopard.in.ua/)
+                - 참조 : https://sql-joins.leopard.in.ua/
 
 
 
