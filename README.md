@@ -40,7 +40,8 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             - DDL (Data Definition Language) : 데이터베이스, 테이블, 인덱스 생성 기능 CREATE, ALTER, DROP
             - DML (Data Manipulation Language) : 검색(SELECT), 삽입(INSERT), 수정(UPDATE), 삭제(DELETE) 기능 (!) : 가장 중요하다.
             - DCL (Data Control Language) : 보안, 데이터의 사용 권한 부여(GRANT)/제거(REVOKE) 기능
-            - TCL (Transaction) : 트랜스액션(트랜잭션) 제어하는 기능 COMMIT, ROLLBACK
+            - TCL (Transaction Control Language) : 트랜스액션(트랜잭션) 제어하는 기능 COMMIT, ROLLBACK
+                - TCL의 경우 DCL에서 분리되어 나왔다.
 
     - SSMS 실행
         - SQL Server Management studio 접속
@@ -49,6 +50,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             - 암호화 : 선택적
             - 이후 연결 클릭
         ![SSMS 로그인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db002.png)
+        - 특이사항 : SSMS 쿼리창에서 소스코드 작성시 빨간색 오류 밑줄이 가끔 표현(전부 오류는 아니다.)
 
     - 설정
         - 도구 -> 옵션
@@ -88,7 +90,80 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             ```
 
 ## 2일차
+- Database 학습
+    - DB 개발시 사용할 수 있는 툴
+        - SSMS(기본)
+        - Visual Studio - 아무런 설치 없이 개발 가능
+        - Visual Studio Code - SQL Server(mssql) 플러그인 설치하고 개발
+            - SQL 연결 탭에서 Add Connection 선택
+            - Local host 입력
+            - 데이터 베이스명 입력
+            - id/비밀번호 입력
+                - Save는 선택
+            - enable
+    - Hostname(ServerName) - 자신의 컴퓨터의 이름(cmd에서 hostname 을 통해 확인 가능/)|내 네트워크 주소|127.0.0.1(LoopBack IP)|localhost(LoopBack URL) 선호하는 아무거나
+    - 관계 데이터 모델
+        - 릴레이션 - 행과 열로 구성된 테이블
+            - 행(튜플), 열(속성), 스키마, 인스턴스 용어 정리
+            - 릴레이션의 특징
+                - 1. 속성은 단일 값을 가진다.
+                    - 책 이름이 여러개 들어가면 안된다.
+                - 2. 속성은 서로 다른 이름을 가진다.
+                    - '책 이름' 이라는 속성이 여러개 있으면 안된다.
+                - 3. 한 속성의 값은 정의된 도메인 값을 가진다.
+                    - 대학교 학년에 9학년이 있으면 안된다.
+                - 4. 릴레이션 내의 중폭된 튜플은 허용하지 않는다.
+                    - 같은 책 정보를 두 번 넣을 수 없다.
+                - 5. 속성의 순서는 상관없다.
+                - 6. 튜플의 순서는 상관없다.
+                    - 1, 5, 3, 2, 7, 9, ...
+        
+        - 테이블(실제 DB) - 릴레이션과 매핑되는 이름
+            - 행(레코드), 열(컬럼), 내포(필드명), 외연(데이터)
+        - 차수(degree) : 속성의 수 
+        - 카디널리티(cardinality) : 튜플의 수
 
+        - 관계 데이터 모델은 아래의 요소로 구성된다.
+            - 릴레이션(Relation)
+            - 제약 조건(Contraints)
+            - 관계 대수(Relational algebra)
+
+        - 한번에 같은 문자 여러개를 지우는 경우
+            - 지우고 싶은 문자를 드래그 후 Ctrl + H -> Ctrl + Alt + Enter
+
+- DML 학습
+    - SELECT 문
+        - 복합 조건
+        - 집계 함수와 GROUP BY, HAVING
+            - 집계 함수
+                - SUM(총 합), AVG(평균), COUNT(개수), MIN(최소), MAX(최대) 
+            - GROUP BY
+                - GROUP BY절에 들어있는 컬럼 외에는 SELECT문에 절대 사용 할 수 없음
+                ```sql
+                 SELECT custid, bookid SUM(saleprice) AS '판매액' 
+                   FROM Orders
+                  GROUP BY custid;
+                 -- bookid는 사용 불가
+                ```
+                - 단, saleprice는 집계함수 안에 들어있으므로 예외이다.
+            - HAVING
+                - HAVING은 집계함수의 필터로 GROUP BY 뒤에 작성. WHERE절과 필터링이 다르다.
+                ```sql
+                 SELECT custid, COUNT(*) AS [구매수]
+                   FROM Orders
+                  WHERE saleprice >= 8000
+                  GROUP BY custid
+                 HAVING COUNT(*) >= 2; -- 조건 : COUNT(2) 가 2 이상인 것
+                ```
+            - WHERE
+                - WHERE 절에서 조건을 설정할 때 문자가 포함되는 경우 LIKE 를 사용한다.
+                    - EX. 성이 '김'씨이고, '아'로 끝나는 이름인 고객의 이름과 주소
+                    ```sql
+                     SELECT [name]
+                          , [address]
+                       FROM Customer
+                      WHERE [name] LIKE '김%아';
+                    ```
 
 ## 3일차
 
