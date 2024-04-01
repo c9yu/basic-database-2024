@@ -22,7 +22,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 - 혼합모드(sa)에 대한 암호를 지정해줘야 한다./mssql_p@ss(8자 이상, (대소문자 구분), 특수문자 1자 이상 포함)
                 - 데이터 디렉토리는 변경이 필요 할 수 있다.
                 - (데이터 루트 디렉토리: C에 폴더를 하나 만들고 거기를 지정)
-        ![기능선택](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db001.png)
+    ![기능선택](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db001.png)
 
     - 개발툴 설치
         - SSMS(Sql Server Management Studio) DB에 접근하여 여러 개발작업을 가능하게 하는 툴
@@ -49,7 +49,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 - 미리 지정해뒀던 패스워드 입력
             - 암호화 : 선택적
             - 이후 연결 클릭
-        ![SSMS 로그인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db002.png)
+    ![SSMS 로그인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db002.png)
         - 특이사항 : SSMS 쿼리창에서 소스코드 작성시 빨간색 오류 밑줄이 가끔 표현(전부 오류는 아니다.)
 
     - 설정
@@ -221,7 +221,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 - 관계형 DB에서 가장 중요한 기법 중 하나 : JOIN!
                 - INNER JOIN(내부 조인)
                 - LEFT|RIGHT OUTER JOIN(외부 조인) - 어느 테이블이 기준인지에 따라서 결과가 상이함
-                ![외부 조인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db004.png)
+            ![외부 조인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db004.png)
                 - 참조 : https://sql-joins.leopard.in.ua/
 
 
