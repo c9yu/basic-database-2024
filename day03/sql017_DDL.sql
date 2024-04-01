@@ -78,3 +78,32 @@ CREATE TABLE NewOrder (
     FOREIGN KEY (custid) REFERENCES NewCustomer(custid) ON DELETE CASCADE
 
 );
+
+-- 2. 테이블 변경/수정 ALTER
+CREATE TABLE MyBook(
+    bookid    INT,
+    bookname  VARCHAR(20),
+    publisher VARCHAR(20),
+    price     INT,
+)
+
+-- 새 테이블인 MyBook에 isbn이라는 컬럼을 추가
+ALTER TABLE MyBook ADD isbn VARCHAR(13);
+
+-- isbn을 INT형으로 변경
+ALTER TABLE MyBook ALTER COLUMN isbn INT;
+
+-- isbn을 컬럼 삭제
+ALTER TABLE MyBook DROP isbn;
+
+-- bookname 을 NOT NULL로 제약조건 적용
+ALTER TABLE MyBook ALTER COLUMN bookname INT NOT NULL;
+
+-- bookid에 기본키 설정
+ALTER TABLE MyBook ALTER COLUMN bookid INT NOT NULL;
+ALTER TABLE MyBook ADD PRIMARY KEY(bookid);
+
+-- 3. 테이블 삭제
+DROP TABLE MyBook;
+
+DROP TABLE NewCustomer;
