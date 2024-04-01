@@ -385,7 +385,19 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
         )
         ```
     - ALTER : 개체를 변경(수정)하는 구문
+        ```sql
+        ALTER TABLE 테이블명
+            [ADD 속성이름 데이터타입]
+            [DROP COLUMN 속성이름]
+            [ALTER COLUMN 속성이름 데이터타입]
+            [ALTER COLUMN 속성이름 [NULL | NOT NULL]]
+            [ADD PRIMARY KEY(속성이름)]
+            [[ADD | DROP] 제약조건이름];
+        ```
     - DROP : 개체를 삭제하는 구문
+        ```sql
+        DROP TABLE 테이블명;
+        ```
 
 ## 4일차
 

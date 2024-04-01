@@ -46,3 +46,35 @@ CREATE TABLE NewBook(
     price INT
     PRIMARY KEY (bookid, bookname) -- 기본키를 두 개 이상
 )
+
+-- 각 컬럼에 제약조건을 걸면
+CREATE TABLE NewBook(
+    bookname VARCHAR(20) NOT NULL,
+    publisher VARCHAR(20) UNIQUE, -- 유니크 제약조건
+    price INT DEFAULT 10000 CHECK(price > 1000)
+    -- 값을 넣지 않으면 기본적으로 10000이 들어가고, 값은 1000보다 크다.
+    -- 기본값 제약조건, 체크 제약조건
+    PRIMARY KEY (bookname, publisher) -- 개체 무결점 제약조건
+
+);
+
+-- 새 고객 테이블 (기본키)
+CREATE TABLE NewCustomer (
+    custid INT PRIMARY KEY,
+    custname VARCHAR(40),
+    custaddress VARCHAR(255),
+    phone VARCHAR(30)
+);
+
+
+-- 새 주문 테이블 (기본키 + 외래키)
+CREATE TABLE NewOrder (
+    orderid INT,
+    custid INT NOT NULL,
+    bookid INT NOT NULL,
+    saleprice INT,
+    orderdate DATE,
+    PRIMARY KEY (orderid),
+    FOREIGN KEY (custid) REFERENCES NewCustomer(custid) ON DELETE CASCADE
+
+);
