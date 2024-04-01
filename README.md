@@ -2,7 +2,7 @@
 IoT 개발자 과정 SQLServer 학습 리포지토리
 
 ## 1일차
-- MS SQL Server 설치: https://www.microsoft.com/ko-kr/sql-server/sql-server-downloads 최신버전 설치
+- MS SQL Server 설치: [최신버전 설치](https://www.microsoft.com/ko-kr/sql-server/sql-server-downloads) 
     - DBMS 엔진 - 개발자 버전
         - 미디어 다운로드 선택
         - iso 선택/ 이후 경로 지정
