@@ -224,9 +224,179 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             ![외부 조인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db004.png)
                 - 참조 : https://sql-joins.leopard.in.ua/
 
-
-
 ## 3일차
+- Database 학습
+    - 관계 데이터 모델
+        - 키
+            - 특정 튜플을 식별할 때 사용하는 속성 혹은 속성의 집합
+            - 릴레이션 간에 관계를 맺는 데도 사용
+            - 키가 되는 속성은 반드시 값이 달라서 튜플들을 서로 구별할 수 있어야 한다.
+            
+            - 슈퍼키 (단일, 집합)
+                - 튜플을 유일하게 식별할 수 있는 값이면 모두 슈퍼키가 될 수 있다. (중복X)
+                    - EX. 고객번호 : 고객별로 유일한 값이 부여되어 있기 때문에 튜플을 식별 가능
+                    - EX. 이름 : 동명이인이 있을 경우 튜플을 유일하게 식별 할 수 없음
+                    - EX. 고객번호, 이름
+            
+            - 후보키 (최소 집합(단일))
+                - 튜플을 유일하게 식별할 수 있는 속성의 최소 집합 (중복X)
+                    - EX. 고객번호, 주민번호
 
+            - 복합키 (집합)
+                - 두 개 이상의 속성의 집합으로 이루어진 키
+                    - EX. 고객번호, 주민번호
+
+            - *기본키(단일) - Pribary Key
+                - 여러 후보키 중에서 하나를 선정하여 대표로 삼는 키
+                    - 기본키 선정시 고려사항
+                        - 릴레이션 내 튜플을 식별할 수 있는 고유한 값을 가져야 한다.
+                        - NULL 불가능
+                        - 최소 속성의 집합
+                        - 개인정보등의 보안사항은 사용 자제
+                    - EX. 고객번호           
+            
+            - 대리키(단일)
+                - 기본키가 보안을 요하거나, 여러개의 속성으로 구성되어 복잡하거나, 마땅한 기본키가 없는 경우
+                일련번호 같은 가상의 속성을 만들어 이를 대리키(혹은 인조키)로 사용한다.
+                - EX. 고객번호 - 기본키이면서 대리키
+            
+            - 대체키
+                - 기본키로 선정되지 않은 후보키
+
+            - *외래키 - Foriegn Key
+                - 기본키를 참조하여 사용하는 것
+                - 고려사항
+                    - 다른 릴레이션과의 관계
+                    - 다른 릴레이션의 기본키를 호칭
+                    - 서로 같은 값이 사용된다
+                    - 기본키가 변경되면 외래키도 변경되어야 함
+                    - 반드시 Not NULL은 아니다 (Not NULL인 경우도 있음)
+                    - 중복을 허용한다
+                    - 자기 자신의 기본키를 외래키로 사용할 수도 있음
+                    - 외래키가 기본키의 속성 중 하나가 될 수도 있음
+
+        - 무결성 제약조건
+            - 데이터 무결성(Integrity) 
+                - DB에 저장된 데이터의 일관성과 정확성을 지키는 것
+            - 도메인 무결성 제약조건 
+                - 릴레이션 내의 튜플들이 각 속성의 도메인에 지정된 값만을 가져야 한다는 조건 
+                - 데이터 타입, NOT NULL, 기본값(무슨 값인지 모를땐 1을 넣어라 등), 체크 특성을 지키는 것
+            - 개체 무결성 제약조건
+                - '기본키 제약' 이라고 하기도 함
+                - Unique에 NOT NULL (값이 중복되어도 안되고, 빠져도 안된다.)
+            - 참조 무결성 제약조건
+                - '외래키 제약' 이라고 하기도 함
+                - 부모의 키가 아닌 값은 사용할 수 없다.
+                - 외래키가 바뀔 때 기본키의 값이 아닌 것은 제약을 받는다. (사용할 수 없다)
+                - RESTRICT (자식에서 키를 사용하고 있으면 부모 삭제 금지)
+                - CASCADE (부모가 지워지면 해당 자식도 같이 삭제)
+                - DEFAULT (부모가 지워지면 자식은 지정된 기본값으로 변경)
+                - NULL (부모가 지워지면 자식의 해당값을 NULL로 변경)
+            - 유일성 제약조건
+                - 일반 속성의 값이 중복되면 안되는 제약조건. NULL값은 허용
+
+- DML 학습
+    - SELECT문
+        - 외부 조인(OUTER JOIN)
+            - LEFT OUTER JOIN
+                - 왼쪽 테이블 기준으로 조건에 일치하지 않는 왼쪽 테이블 데이터 모두 표시
+                ```sql
+                SELECT c.custid
+                    , c.[name]
+                    , c.[address]
+                    , c.phone
+                    , o.orderid
+                    , o.custid
+                    , o.bookid
+                    , o.saleprice
+                    , o.orderdate
+                FROM Customer AS c LEFT OUTER JOIN Orders AS o
+                ON c.custid = o.custid
+                /*
+                1~10행은 A와 B의 교집합에 해당하고 11행은 교집합을 제외한 A에 해당한다
+                그로인해 11행의 B에 해당하는 값들이 전부 NULL이 출력된다.
+                */
+                ```
+            - RIGHT OUTER JOIN
+                - 오른쪽 테이블 기준으로 조건에 일치하지 않는 오른쪽 테이블 데이터 모두 표시
+
+            - FULL OUTER JOIN
+                - 잘 사용하지 않음 
+
+        - 부속 질의(SubQuery)
+            - 쿼리 내에 다시 쿼리를 작성하는 것
+            - 서브쿼리를 쓸 수 있는 장소
+                - SELECT 절
+                    - 한 컬럼에 하나의 값만 사용
+                    ```sql
+                     SELECT o.orderid
+                          , o.custid
+                          , (SELECT name FROM Customer WHERE custid = o.custid) AS '고객명'
+                          , o.bookid
+                          , (SELECT bookname FROM Book WHERE bookid = o.bookid) AS '도서명'
+                          , o.saleprice
+                          , o.orderdate
+                       FROM Orders AS o;
+                    ```
+                - FROM 절
+                    - 가상의 테이블로 사용
+                    ```sql
+                     SELECT t.*
+                       FROM (
+                             SELECT b.bookid
+                                  , b.bookname
+                                  , b.publisher
+                                  , o.orderdate
+                                  , o.orderid
+                               FROM Book AS b, Orders AS O
+                              WHERE b.bookid = o.bookid
+                            ) AS t;
+                    ```
+                - WHERE 절
+                    - 여러 조건에 많이 사용
+                    ```sql
+                     SELECT [name] AS '고객 이름'
+                       FROM Customer
+                      WHERE Custid IN (SELECT DISTINCT custid 
+                       FROM Orders); 
+                    -- IN을 사용하면 구매한 적 있는사람
+                    ```
+        - 집합연산 - JOIN도 집합이지만, 속성별로 가로로 병합하기 때문에 집합이라 부르지 않음. 집합은 데이터를 세로로 합치는 것을 뜻함
+            - 차집합 (EXCEPT, 거의 사용안함)
+            - 합집합 (UNION, 진짜 많이 사용함)
+            - 교집합 (INTERSECT, 거의 사용 안함)
+            - EXISTS : 데이터 자체의 존재여부
+
+    - DDL
+        - CREATE : 개체(데이터베이스, 뷰, 테이블, 사용자 등)를 생성하는 구문
+        ```sql
+        -- 테이블 생성에 한정
+        CREATE TABLE 테이블명
+        ({ 속성이름 데이터타입
+            [NOT NULL]
+            [UNIQUE]
+            [DEFAULT 기본값]
+            [CHECK 체크조건]
+        }
+            [PRIMARY KEY 속성이름(들)]
+            {[FORIEGN KEY 속성이름 REFERENCES 테이블이름(속성이름)]
+                [ON UPDATE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]]
+            }
+        )
+        ```
+    - ALTER : 개체를 변경(수정)하는 구문
+    - DROP : 개체를 삭제하는 구문
 
 ## 4일차
+
+
+## 5일차
+
+
+## 6일차
+
+
+## 7일차
+
+
+## 8일차
