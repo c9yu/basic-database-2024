@@ -18,3 +18,30 @@ SELECT b.custid
           FROM Orders
          GROUP BY custid)AS b
  WHERE CONVERT(float, b.custCount)/b.totalCount >= 0.3;
+
+-- 4-1. 새 도서 추가
+ INSERT INTO Book
+      VALUES (14, '스포츠 세계', '대한 미디어', 10000);
+
+-- 4-2. 삼성당 도서 삭제
+DELETE FROM Book
+ WHERE publisher = '삼성당';
+
+-- 4-3. 이상미디어 출판 도서 삭제하시오
+-- 참조 제약조건에 걸리기 때문에 삭제가 불가
+-- 삭제하려면 Orders 테이블에서 bookid 7, 8을 삭제 후 삭제 가능
+DELETE FROM Book
+ WHERE publisher = '이상미디어';
+
+-- 4-4. 출판사 대한미디어를 대한출판사로 바꾸시오
+UPDATE Book
+   SET publisher = '대한출판사'
+ WHERE publisher = '대한미디어'
+
+ UPDATE Book
+   SET publisher = '대한출판사'
+ WHERE bookid IN (SELECT bookid
+                    FROM Book
+                   WHERE publisher = '대한미디어')
+
+                   
