@@ -533,6 +533,8 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 5. IP주소 탭 > IP주소가 **본인 IP인 것에 사용을 > '예'**로 변경
                 6. **127.0.0.1로 된 주소 > 사용 > '예'**로 변경
                 7. 적용 후 SQL Server 서비스 > SQL Server(MSSQLSERVER) 더블클릭 후, **다시 시작** 버튼 클릭, 재시작 필요(!)
+
+
             ![구성관리자](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db005.png)
             
 
