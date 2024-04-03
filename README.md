@@ -526,12 +526,15 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
                 > pip install pymssql
                 ```
             - DB 연결 설정 - Oracle, MySQL 등은 설정이 없음. 구성관리자에서 TCP/IP로 접근을 허용하지 않으면 접속 안됨
-                1. 시작메뉴 > 모든앱 > Microsoft SQL Server 20xx > SQL Server 20xx 구성관리자 실행
-                2. SQL Server 네트워크 구성 > MSSQL SERVER에 대한 프로토콜 클릭
+                1. 시작메뉴 > 모든앱 > Microsoft SQL Server 20xx > **SQL Server 20xx 구성관리자** 실행
+                2. SQL Server 네트워크 구성 > **MSSQL SERVER에 대한 프로토콜** 클릭
                 3. TCP/IP 프로토콜 상태가 사용 안함(최초) > TCP/IP를 더블클릭
-                4. 프로토콜 사용을 > '예'로 변경
-                5. IP주소 탭 > IP주소가 본인 IP인 것에 사용을 > '예'로 변경
-                6. 127.0.0.1로 된 주소 > 사용 > '예'로 변경
+                4. **프로토콜 사용을 > '예'**로 변경
+                5. IP주소 탭 > IP주소가 **본인 IP인 것에 사용을 > '예'**로 변경
+                6. **127.0.0.1로 된 주소 > 사용 > '예'**로 변경
+                7. 적용 후 SQL Server 서비스 > SQL Server(MSSQLSERVER) 더블클릭 후, **다시 시작** 버튼 클릭, 재시작 필요(!)
+            ![구성관리자](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db005.png)
+            
 
     - 데이터베이스 모델링
 

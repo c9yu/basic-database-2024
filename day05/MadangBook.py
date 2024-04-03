@@ -34,12 +34,12 @@ class qtApp(QMainWindow):
 
     def btnNewClicked(self): # 신규버튼 클릭
         QMessageBox.about(self, '버튼', '신규버튼이 클릭됨')
-        conn = db.connect('localhost', 'sa', 'mssql_p@ss', 'Madang')
+        conn = db.connect(server = 'localhost', user = 'sa', password = 'mssql_p@ss', database = 'Madang', charset = 'EUC-KR')
         cursor = conn. cursor(as_dict=True)
 
         cursor.execute('SELECT * FROM Book')
         for row in cursor:
-            print(f'bookid = {row["bookid"]}')
+            print(f'bookid={row["bookid"]}, bookname={row["bookname"]}, publisher={row["publisher"]}, price={row["price"]}')
 
         conn.close()
 
