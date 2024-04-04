@@ -553,7 +553,9 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             - 3.INSERT 쿼리에 한글 입력되는 컬럼은 N''을 붙여준다.
 
     - 실행화면
-    - 
+    https://github.com/c9yu/basic-database-2024/assets/158007438/6eead07a-1005-4155-acbf-2d191fff4501
+
+
     
 
 
@@ -562,8 +564,6 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
     - 트랜잭션
 
 - 데이터베이스 모델링
-
-https://github.com/c9yu/basic-database-2024/assets/158007438/fc971a95-9010-47b5-b8bd-ac901ce3f4d5
 
 
 
