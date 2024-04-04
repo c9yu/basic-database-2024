@@ -1,7 +1,7 @@
 # basic-database-2024
 IoT 개발자 과정 SQLServer 학습 리포지토리
 
-## 1일차
+## 1일차 (2024-03-28)
 - MS SQL Server 설치: [최신버전 설치](https://www.microsoft.com/ko-kr/sql-server/sql-server-downloads) 
     - DBMS 엔진 - 개발자 버전
         - 미디어 다운로드 선택
@@ -89,7 +89,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
              [ORDER BY 속성이름(들) [ASC|DESC]]
             ```
 
-## 2일차
+## 2일차 (2024-03-29)
 - Database 학습
     - DB 개발시 사용할 수 있는 툴
         - SSMS(기본)
@@ -224,7 +224,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             ![외부 조인](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db004.png)
                 - 참조 : https://sql-joins.leopard.in.ua/
 
-## 3일차
+## 3일차 (2024-04-01)
 - Database 학습
     - 관계 데이터 모델
         - 키
@@ -451,7 +451,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
             - 집계 함수 계산 시 NULL이 포함된 행은 집계에서 빠짐
             - 해당되는 행이 하나도 없을 경우 SUM, AVG 함수의 결과는 NULL이 되며, COUNT함수의 결과는 0이다.
 
-## 5일차
+## 5일차 (2024-04-03)
 - SQL 고급
     - 서브쿼리 리뷰
     - 뷰
@@ -540,8 +540,17 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
 
     - 데이터베이스 모델링
 
-## 6일차
+## 6일차 (2024-04-04)
+- 파이썬 SQL Server 연동 프로그래밍
+    - Madang DB 관리 프로그램
+        - PyQt5 + pymssql
 
+    - 탭순서 편집
+    - 프로그램을 작성하며 생긴 문제점
+        - 한글 깨짐 문제
+            - 1.DB 테이블을 우클릭 -> 디자인탭에서 varchar(ASCII) -> nvarchar(UTF-8)로 변경
+            - 2.Python에서 pymssql로 접속할 때, Charset을 utf-8로 설정
+            - 3.INSERT 쿼리에 한글 입력되는 컬럼은 N''을 붙여준다.
 
 ## 7일차
 
