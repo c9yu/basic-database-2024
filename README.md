@@ -641,3 +641,7 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
 
 
 ## 8일차
+- SSMS : basic2024, Visual studio : Madang
+- 인덱스 예제
+- 정규화
+- 실무 실습
