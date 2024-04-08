@@ -639,6 +639,11 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
         - 인덱스가 설정되면 성능이 어떤지 비교
         - 더미 생성시 100만건으로 제약을 두고 시작
 
+    <!-- md 주석. ![인덱스](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db009.png) -->
+    <!-- html img 태그가 이미지 사이즈 조정 가능-->
+
+    <img src = "https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db009.png" width="900">
+
 
 ## 8일차
 - SSMS : basic2024, Visual studio : Madang
