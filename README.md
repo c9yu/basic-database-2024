@@ -690,6 +690,8 @@ IoT 개발자 과정 SQLServer 학습 리포지토리
         - CASE WHEN THEN END ...
         - 내장함수 ...
 
+    ![HR_ERD](https://raw.githubusercontent.com/c9yu/basic-database-2024/main/imamges/db010.png)
+
 - 공부를 더 할 부분
     - 트랜잭션 중급 이상
     - DB 보안 백업과 복원 부분

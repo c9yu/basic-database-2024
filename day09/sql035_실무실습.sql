@@ -176,9 +176,3 @@ SELECT EMPLOYEE_ID
 SELECT ROW_NUMBER() OVER(ORDER BY employee_id ASC)
      , *
   FROM employees
-
-
---
-SELECT *
-  FROM 
- GROUP BY
